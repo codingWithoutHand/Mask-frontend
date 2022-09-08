@@ -1,3 +1,43 @@
-* {
-    background-color: #ffffff;
+body {
+    background-color: #0f1421;
+    color: #cfcfcf;
+    /* font-family: "Lucida Console", Monaco, monospace; */
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main {
+    /* background-color: #191f2c; */
+    min-width: 100px;
+    max-width: 480px;
+}
+
+.content {
+    padding: 0px 10px;
+}
+
+button {
+    background-color: #272b38;
+    color: #cfcfcf;
+    border: #303540 1px solid;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
+
+section {
+    background-color: #191f2c;
+    color: #cfcfcf;
+    border: #303540 1px solid;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px 15px;
+}
+
+.title {
+    text-align: center;
 }
