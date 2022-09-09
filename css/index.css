@@ -1,7 +1,22 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    
+    /* --bg: #0f1421;
+    --btn: #272b38;
+    --txt: #cfcfcf;
+    --border: #303540;
+    --section: #191f2c; */
+
+    --bg: #D8DEE9;
+    --btn: #D8DEE9;
+    --txt: #2E3440;
+    --border: #AAB2CD;
+    --section: #E5E9F0;
+}
+
 body {
-    background-color: #0f1421;
-    color: #cfcfcf;
-    /* font-family: "Lucida Console", Monaco, monospace; */
+    background-color: var(--bg);
+    color: var(--txt);
     font-size: 12px;
     margin: 0;
     padding: 0;
@@ -21,18 +36,18 @@ body {
 }
 
 button {
-    background-color: #272b38;
-    color: #cfcfcf;
-    border: #303540 1px solid;
+    background-color: var(--btn);
+    color: var(--txt);
+    border: var(--border) 1px solid;
     border-radius: 10px;
     padding: 10px 15px;
     margin-bottom: 10px;
 }
 
 section {
-    background-color: #191f2c;
-    color: #cfcfcf;
-    border: #303540 1px solid;
+    background-color: var(--section);
+    color: var(--txt);
+    border: var(--border) 1px solid;
     border-radius: 10px;
     margin: 10px;
     padding: 5px 15px;
