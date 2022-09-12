@@ -2,14 +2,8 @@ class App {
     constructor() {
         const registerHomeBtn = document.getElementById('registerHomeBtn')
 
-        if (this.isDarkMode()) {
-            const bg = document.body.style.getPropertyValue('--bg')
-            alert(bg)
-        } else {
-            const bg = document.body.style.getPropertyValue('--bg')
-            alert(bg)
-        }
-        
+        // 다크 모드
+        if (this.isDarkMode()) this.changeTheme(true)
         // 집 등록하기
         registerHomeBtn.onclick = async () => {
             // 위치 정보 가져올 수 있는지
@@ -24,10 +18,16 @@ class App {
         }
     }
 
+    changeTheme(dark) {
+        const themeColors = { '--bg': '#0f1421', '--btn': '#272b38', '--txt': '#cfcfcf', '--border': '#303540', '--section': '#191f2c' }
+        if (!dark) themeColors = { '--bg': '#D8DEE9', '--btn': '#D8DEE9', '--txt': '#2E3440', '--border': '#AAB2CD', '--section': '#E5E9F0' }
+        const root = document.querySelector(':root')
+        for (const key in themeColors) root.style.setProperty(key, themeColors[key])
+    }
+
     isDarkMode() {
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
+        return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
     }
 }
 
-window.onload(() => new App())
+window.onload = () => new App()
