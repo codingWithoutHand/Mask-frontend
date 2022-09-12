@@ -10,9 +10,9 @@ class App {
     constructor() {
         const registerHomeBtn = document.getElementById('registerHomeBtn')
 
-        // 다크 모드
         if (this.isDarkMode()) this.changeTheme(true)
 
+        if (!navigator.geolocation) return
         navigator.geolocation.getCurrentPosition(async (position) => {
             const container = document.getElementById('map')
             const options = {
@@ -22,12 +22,16 @@ class App {
             const map = new kakao.maps.Map(container, options)
             this.latitude = position.coords.latitude
             this.longitude = position.coords.longitude
-            console.log(this.latitude, this.longitude)
-        },this.error, this.locationOptions)
+            const markerPosition  = new kakao.maps.LatLng(this.latitude, this.longitude)
+            const marker = new kakao.maps.Marker({ position: markerPosition })
+            console.log(marker)
+            marker.setMap(map)
+            map.setCenter(markerPosition)
 
-        // 집 등록하기
+            console.log(this.latitude, this.longitude)
+        }, this.error, this.locationOptions)
+
         registerHomeBtn.onclick = async () => {
-            // 위치 정보 가져올 수 있는지
             if (!('geolocation' in navigator)) {
                 alert('현재 위치 정보를 가져올 수 없습니다.')
                 return
@@ -42,6 +46,10 @@ class App {
         console.log(err)
     }
 
+    /**
+     * 웹 사이트 다크 모드, 라이트 모드 변경
+     * @param {boolean} dark 
+     */
     changeTheme(dark) {
         let themeColors = { '--bg': '#0f1421', '--btn': '#272b38', '--txt': '#cfcfcf', '--border': '#303540', '--section': '#191f2c' }
         if (!dark) themeColors = { '--bg': '#D8DEE9', '--btn': '#D8DEE9', '--txt': '#2E3440', '--border': '#AAB2CD', '--section': '#E5E9F0' }
