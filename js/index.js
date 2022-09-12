@@ -1,6 +1,11 @@
 class App {
     latitude = 0.0
     longitude = 0.0
+    locationOptions = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    }
 
     constructor() {
         const registerHomeBtn = document.getElementById('registerHomeBtn')
@@ -17,7 +22,8 @@ class App {
             const map = new kakao.maps.Map(container, options)
             this.latitude = position.coords.latitude
             this.longitude = position.coords.longitude
-        })
+            console.log(this.latitude, this.longitude)
+        },this.error, this.locationOptions)
 
         // 집 등록하기
         registerHomeBtn.onclick = async () => {
@@ -28,7 +34,12 @@ class App {
             }
             localStorage.setItem('latitude', this.latitude)
             localStorage.setItem('longitude', this.longitude)
+            alert('집 등록이 완료되었습니다.')
         }
+    }
+
+    error(err) {
+        console.log(err)
     }
 
     changeTheme(dark) {
